@@ -1,0 +1,33 @@
+There is a way to preserve space by replacing the Childs array with Child's linked list. 
+This replacement will improve memory efficiency. 
+The downsides are: we will lose the direct approach to the child's location (in the worst case 25 steps for each TrieNode). 
+                                 which actually doesn't matter in asymptotic notation (it is a constant)
+but, obviously, if we have 26 chars for each TrieNode, the Array would have better memory efficiency, since it doesn't hold the pointer.
+
+1.we need to find mathematically, what is the balance point - over how manny char the Array implementation consumes less space.
+(of course that in the balance point, the array will be preferred since time complexity is better on it.)
+
+1: 
+in the Array implementation, each TrieNode uses a constant amount of memory: 
+Child's array consists of 26 pointers : 4*26 = 104 bytes
+IsEndOfWord = Boolean can take 1 bit in best case -> usually will take 1byte (depens on the structs implementation)
+WordUsingCount = (depens on DATA definition (short,int) 2 bytes
+so the Array Implementation will consume ~ 107 bytes 
+
+
+
+in the LinkedList implementation, each TrieNode Will use 
+Childs LinkedList will Consist of 1-26 Nodes,
+each one will contain the value(pointer to TN), and a pointer to the next node, in total 2 pointers per LLNode -> 8bytes
+so 8*26 =208 in worst case ----> 8-208 bytes per Children LL
+IsEndOfWord = (same) 1 byte
+WordUsingCount = (same)2 byte
+so the LinkedList Implementation will consume between 11- 211 bytes
+
+
+after that found, 
+2. we'll need to find the way to calculate the average ratio of char to TrieNodes used,
+so we will be able to choose the most efficient implementation for the specific case. 
+
+
+LL- LinkedList
